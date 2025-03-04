@@ -1,6 +1,6 @@
 <script lang="ts">
+    import Button from '$lib/components/ui/button/button.svelte';
     const { data } = $props()
-
     console.log(data)
 </script>
 
@@ -11,3 +11,7 @@
     </li>
     {/each}
 </ul>
+
+<div class="fixed bottom-0 right-0 p-4">
+    <Button variant="secondary">Katt rám</Button>
+</div>
