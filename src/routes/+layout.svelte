@@ -5,7 +5,7 @@
 </script>
 
 {#key data.url}
-	<div class="container mx-auto py-5"
+	<div class="container mx-auto py-5 min-h-svh flex flex-col"
 		in:slide={{ duration: 300, axis: 'y' }}
 		out:slide={{ duration: 300, axis: 'y'}}>
 		{@render children()}
