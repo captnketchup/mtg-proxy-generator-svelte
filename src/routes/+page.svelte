@@ -1,12 +1,8 @@
 <script lang="ts">
-    let { data } = $props()
+	import { goto } from "$app/navigation";
+
+    let username: string = $state("")
 </script>
 
-<div>
-    {#each data.data as card}
-        {card.id}
-        {card.name}
-        {card.image}
-        <br>
-    {/each}
-</div>
+<input bind:value={username} class="border-2">
+<button onclick={() => goto(`/${username}`)}>Find me decks</button>

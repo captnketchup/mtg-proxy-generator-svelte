@@ -19,7 +19,7 @@ export class MoxfieldClient {
         const paramsObj = {
             includePinned: "true",
             showIllegal: "true",
-            authorUserNames: "captnketchup",
+            authorUserNames: userName,
             pageNumber: "1",
             pageSize: "12",
             sortType: "updated",
@@ -36,34 +36,17 @@ export class MoxfieldClient {
 
     static async GetDeck(deckId: string) {
         const searchUrl = `${this.baseUrl}/v3/decks/all/${deckId}`
-        console.log("GECISFASZ")
-        console.log(searchUrl)
         const response = await fetch(searchUrl)
         const body: DeckResponse = await response.json()
-        console.log(body)
-        return this.FilterCardsFromDeck(body)
+        return body
     }
 
     static FilterCardsFromDeck(deckResponse: DeckResponse) {
         return Object.values(deckResponse.boards.mainboard.cards)
-            .map((c) => (new CardSimplified(
-                c.card.id,
-                c.card.name
-            )))
+            .map((c) => ({
+                id : c.card.id,
+                name: c.card.name,
+                image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`
+            }))
     }
-}
-
-class CardSimplified {
-    id: string
-    name: string
-
-    constructor(id: string, name: string) {
-        this.id = id,
-            this.name = name
-    }
-
-    public get image(): string {
-        return `https://assets.moxfield.net/cards/card-${this.id}-normal.jpg`
-    }
-
 }
