@@ -49,4 +49,13 @@ export class MoxfieldClient {
                 image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`
             }))
     }
+
+    static FilterCommanderFromDeck(deckResponse: DeckResponse){
+        return Object.values(deckResponse.boards.commanders.cards)
+        .map((c) => ({
+            id : c.card.id,
+            name: c.card.name,
+            image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`
+        }))
+    }
 }

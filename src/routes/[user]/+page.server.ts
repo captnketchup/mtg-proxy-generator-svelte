@@ -8,5 +8,8 @@ export const load: PageServerLoad = async ({params}) => {
     if (userDecks === undefined){
         error(404, "Decks per user not found")
     }
-    return {...userDecks, user}
+    const deckResponses = await Promise.all(userDecks.data.map(
+        async deck => await MoxfieldClient.GetDeck(deck.publicId)
+    ))
+    return {...userDecks, user, deckResponses}
 };
