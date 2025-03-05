@@ -1,673 +1,680 @@
 export interface UserDecksResponse {
-  pinned: any[]
-  pageNumber: number
-  pageSize: number
-  totalResults: number
-  totalPages: number
-  data: Deck[]
+	pinned: any[];
+	pageNumber: number;
+	pageSize: number;
+	totalResults: number;
+	totalPages: number;
+	data: Deck[];
 }
 
 export interface Deck {
-  matchTypes: any[]
-  matchedCards: any[]
-  id: string
-  name: string
-  hasPrimer: boolean
-  format: string
-  areCommentsEnabled: boolean
-  visibility: string
-  publicUrl: string
-  publicId: string
-  likeCount: number
-  viewCount: number
-  commentCount: number
-  sfwCommentCount: number
-  isLegal: boolean
-  authorsCanEdit: boolean
-  isShared: boolean
-  mainCardId: string
-  mainCardIdIsCardFace: boolean
-  mainCardIdIsBackFace: boolean
-  createdByUser: CreatedByUser
-  authors: Author[]
-  createdAtUtc: string
-  lastUpdatedAtUtc: string
-  mainboardCount: number
-  sideboardCount: number
-  maybeboardCount: number
-  hubNames: any[]
-  colors: string[]
-  colorPercentages: ColorPercentages
-  colorIdentity: string[]
-  colorIdentityPercentages: ColorIdentityPercentages
-  bracket: number
-  autoBracket: number
-  ignoreBrackets: boolean
+	matchTypes: any[];
+	matchedCards: any[];
+	id: string;
+	name: string;
+	hasPrimer: boolean;
+	format: string;
+	areCommentsEnabled: boolean;
+	visibility: string;
+	publicUrl: string;
+	publicId: string;
+	likeCount: number;
+	viewCount: number;
+	commentCount: number;
+	sfwCommentCount: number;
+	isLegal: boolean;
+	authorsCanEdit: boolean;
+	isShared: boolean;
+	mainCardId: string;
+	mainCardIdIsCardFace: boolean;
+	mainCardIdIsBackFace: boolean;
+	createdByUser: CreatedByUser;
+	authors: Author[];
+	createdAtUtc: string;
+	lastUpdatedAtUtc: string;
+	mainboardCount: number;
+	sideboardCount: number;
+	maybeboardCount: number;
+	hubNames: any[];
+	colors: string[];
+	colorPercentages: ColorPercentages;
+	colorIdentity: string[];
+	colorIdentityPercentages: ColorIdentityPercentages;
+	bracket: number;
+	autoBracket: number;
+	ignoreBrackets: boolean;
 }
 
 export interface CreatedByUser {
-  userName: string
-  displayName: string
-  badges: any[]
+	userName: string;
+	displayName: string;
+	badges: any[];
 }
 
 export interface Author {
-  userName: string
-  displayName: string
-  badges: any[]
+	userName: string;
+	displayName: string;
+	badges: any[];
 }
 
 export interface ColorPercentages {
-  white: number
-  blue: number
-  black: number
-  red: number
-  green: number
+	white: number;
+	blue: number;
+	black: number;
+	red: number;
+	green: number;
 }
 
 export interface ColorIdentityPercentages {
-  white: number
-  blue: number
-  black: number
-  red: number
-  green: number
+	white: number;
+	blue: number;
+	black: number;
+	red: number;
+	green: number;
 }
 
 export interface DeckResponse {
-  id: string
-  name: string
-  description: string
-  format: string
-  visibility: string
-  publicUrl: string
-  publicId: string
-  likeCount: number
-  viewCount: number
-  commentCount: number
-  sfwCommentCount: number
-  areCommentsEnabled: boolean
-  isShared: boolean
-  authorsCanEdit: boolean
-  createdByUser: CreatedByUser
-  authors: Author[]
-  requestedAuthors: any[]
-  main: Main
-  boards: Boards
-  version: number
-  tokens: Token[]
-  tokensToCards: TokensToCards
-  cardsToTokens: CardsToTokens
-  tokenMappings: TokenMappings
-  hubs: any[]
-  createdAtUtc: string
-  lastUpdatedAtUtc: string
-  exportId: string
-  authorTags: AuthorTags
-  originalDeck: OriginalDeck
-  isTooBeaucoup: boolean
-  affiliates: Affiliates
-  mainCardIdIsBackFace: boolean
-  allowPrimerClone: boolean
-  enableMultiplePrintings: boolean
-  includeBasicLandsInPrice: boolean
-  includeCommandersInPrice: boolean
-  includeSignatureSpellsInPrice: boolean
-  colors: string[]
-  colorPercentages: ColorPercentages
-  colorIdentity: string[]
-  colorIdentityPercentages: ColorIdentityPercentages
-  media: any[]
-  ownerUserId: string
-  autoBracket: number
-  bracket: number
-  ignoreBrackets: boolean
+	id: string;
+	name: string;
+	description: string;
+	format: string;
+	visibility: string;
+	publicUrl: string;
+	publicId: string;
+	likeCount: number;
+	viewCount: number;
+	commentCount: number;
+	sfwCommentCount: number;
+	areCommentsEnabled: boolean;
+	isShared: boolean;
+	authorsCanEdit: boolean;
+	createdByUser: CreatedByUser;
+	authors: Author[];
+	requestedAuthors: any[];
+	main: Main;
+	boards: Boards;
+	version: number;
+	tokens: Token[];
+	tokensToCards: TokensToCards;
+	cardsToTokens: CardsToTokens;
+	tokenMappings: TokenMappings;
+	hubs: any[];
+	createdAtUtc: string;
+	lastUpdatedAtUtc: string;
+	exportId: string;
+	authorTags: AuthorTags;
+	originalDeck: OriginalDeck;
+	isTooBeaucoup: boolean;
+	affiliates: Affiliates;
+	mainCardIdIsBackFace: boolean;
+	allowPrimerClone: boolean;
+	enableMultiplePrintings: boolean;
+	includeBasicLandsInPrice: boolean;
+	includeCommandersInPrice: boolean;
+	includeSignatureSpellsInPrice: boolean;
+	colors: string[];
+	colorPercentages: ColorPercentages;
+	colorIdentity: string[];
+	colorIdentityPercentages: ColorIdentityPercentages;
+	media: any[];
+	ownerUserId: string;
+	autoBracket: number;
+	bracket: number;
+	ignoreBrackets: boolean;
 }
 
 export interface TokensToCards {
-  YNwb1: string[]
+	YNwb1: string[];
 }
 
 export interface CardsToTokens {
-  EJ51g: string[]
+	EJ51g: string[];
 }
 
 export interface TokenMappings {
-  YNwb1: string[]
+	YNwb1: string[];
 }
 
 export interface Token {
-  id: string
-  uniqueCardId: string
-  scryfall_id: string
-  set: string
-  set_name: string
-  name: string
-  cn: string
-  layout: string
-  cmc: number
-  type?: string
-  type_line: string
-  oracle_text?: string
-  mana_cost?: string
-  power?: string
-  toughness?: string
-  colors: string[]
-  color_indicator: any[]
-  color_identity: string[]
-  legalities: Legalities
-  frame: string
-  reserved: boolean
-  digital: boolean
-  foil: boolean
-  nonfoil: boolean
-  etched: boolean
-  glossy: boolean
-  rarity: string
-  border_color: string
-  colorshifted: boolean
-  lang: string
-  latest: boolean
-  has_multiple_editions: boolean
-  has_arena_legal: boolean
-  prices: Prices
-  card_faces: CardFace[]
-  artist: string
-  promo_types: string[]
-  isArenaLegal: boolean
-  released_at: string
-  arena_id?: number
-  reprint: boolean
-  set_type: string
-  acorn: boolean
-  image_seq: number
-  content_warning: boolean
-  isPauperCommander: boolean
-  isToken: boolean
-  defaultFinish: string
-  cardHoarderUrl?: string
-  cardMarketUrl?: string
-  tcgPlayerUrl?: string
-  coolStuffIncUrl?: string
-  coolStuffIncFoilUrl?: string
-  frame_effects?: string[]
-  cardKingdomUrl?: string
-  cardKingdomFoilUrl?: string
-  edhrec_rank?: number
-  multiverse_ids?: number[]
-  mtgo_id?: number
-  tcgplayer_id?: number
-  cardkingdom_id?: number
-  cardkingdom_foil_id?: number
-  cardTraderUrl?: string
-  cardTraderFoilUrl?: string
-  starcitygames_sku?: string
-  starcitygames_url?: string
-  starcitygames_foil_sku?: string
-  starcitygames_foil_url?: string
+	id: string;
+	uniqueCardId: string;
+	scryfall_id: string;
+	set: string;
+	set_name: string;
+	name: string;
+	cn: string;
+	layout: string;
+	cmc: number;
+	type?: string;
+	type_line: string;
+	oracle_text?: string;
+	mana_cost?: string;
+	power?: string;
+	toughness?: string;
+	colors: string[];
+	color_indicator: any[];
+	color_identity: string[];
+	legalities: Legalities;
+	frame: string;
+	reserved: boolean;
+	digital: boolean;
+	foil: boolean;
+	nonfoil: boolean;
+	etched: boolean;
+	glossy: boolean;
+	rarity: string;
+	border_color: string;
+	colorshifted: boolean;
+	lang: string;
+	latest: boolean;
+	has_multiple_editions: boolean;
+	has_arena_legal: boolean;
+	prices: Prices;
+	card_faces: CardFace[];
+	artist: string;
+	promo_types: string[];
+	isArenaLegal: boolean;
+	released_at: string;
+	arena_id?: number;
+	reprint: boolean;
+	set_type: string;
+	acorn: boolean;
+	image_seq: number;
+	content_warning: boolean;
+	isPauperCommander: boolean;
+	isToken: boolean;
+	defaultFinish: string;
+	cardHoarderUrl?: string;
+	cardMarketUrl?: string;
+	tcgPlayerUrl?: string;
+	coolStuffIncUrl?: string;
+	coolStuffIncFoilUrl?: string;
+	frame_effects?: string[];
+	cardKingdomUrl?: string;
+	cardKingdomFoilUrl?: string;
+	edhrec_rank?: number;
+	multiverse_ids?: number[];
+	mtgo_id?: number;
+	tcgplayer_id?: number;
+	cardkingdom_id?: number;
+	cardkingdom_foil_id?: number;
+	cardTraderUrl?: string;
+	cardTraderFoilUrl?: string;
+	starcitygames_sku?: string;
+	starcitygames_url?: string;
+	starcitygames_foil_sku?: string;
+	starcitygames_foil_url?: string;
 }
 
 export interface CardFace {
-  id: string
-  name: string
-  mana_cost: string
-  type_line: string
-  oracle_text: string
-  colors: any[]
-  color_indicator: any[]
-  image_seq: number
+	id: string;
+	name: string;
+	mana_cost: string;
+	type_line: string;
+	oracle_text: string;
+	colors: any[];
+	color_indicator: any[];
+	image_seq: number;
 }
 
 export interface CreatedByUser {
-  userName: string
-  displayName: string
-  badges: any[]
+	userName: string;
+	displayName: string;
+	badges: any[];
 }
 
 export interface Author {
-  userName: string
-  displayName: string
-  badges: any[]
+	userName: string;
+	displayName: string;
+	badges: any[];
 }
 
 export interface Main {
-  id: string
-  uniqueCardId: string
-  scryfall_id: string
-  set: string
-  set_name: string
-  name: string
-  cn: string
-  layout: string
-  cmc: number
-  type: string
-  type_line: string
-  oracle_text: string
-  mana_cost: string
-  power: string
-  toughness: string
-  colors: string[]
-  color_indicator: any[]
-  color_identity: string[]
-  legalities: Legalities
-  frame: string
-  frame_effects: string[]
-  reserved: boolean
-  digital: boolean
-  foil: boolean
-  nonfoil: boolean
-  etched: boolean
-  glossy: boolean
-  rarity: string
-  border_color: string
-  colorshifted: boolean
-  lang: string
-  latest: boolean
-  has_multiple_editions: boolean
-  has_arena_legal: boolean
-  prices: Prices
-  card_faces: any[]
-  artist: string
-  promo_types: any[]
-  cardHoarderUrl: string
-  cardKingdomUrl: string
-  cardKingdomFoilUrl: string
-  cardMarketUrl: string
-  tcgPlayerUrl: string
-  isArenaLegal: boolean
-  released_at: string
-  edhrec_rank: number
-  multiverse_ids: number[]
-  cardmarket_id: number
-  mtgo_id: number
-  arena_id: number
-  tcgplayer_id: number
-  cardkingdom_id: number
-  cardkingdom_foil_id: number
-  reprint: boolean
-  set_type: string
-  coolStuffIncUrl: string
-  coolStuffIncFoilUrl: string
-  acorn: boolean
-  image_seq: number
-  cardTraderUrl: string
-  cardTraderFoilUrl: string
-  content_warning: boolean
-  starcitygames_sku: string
-  starcitygames_url: string
-  starcitygames_foil_sku: string
-  starcitygames_foil_url: string
-  isPauperCommander: boolean
-  isToken: boolean
-  defaultFinish: string
+	id: string;
+	uniqueCardId: string;
+	scryfall_id: string;
+	set: string;
+	set_name: string;
+	name: string;
+	cn: string;
+	layout: string;
+	cmc: number;
+	type: string;
+	type_line: string;
+	oracle_text: string;
+	mana_cost: string;
+	power: string;
+	toughness: string;
+	colors: string[];
+	color_indicator: any[];
+	color_identity: string[];
+	legalities: Legalities;
+	frame: string;
+	frame_effects: string[];
+	reserved: boolean;
+	digital: boolean;
+	foil: boolean;
+	nonfoil: boolean;
+	etched: boolean;
+	glossy: boolean;
+	rarity: string;
+	border_color: string;
+	colorshifted: boolean;
+	lang: string;
+	latest: boolean;
+	has_multiple_editions: boolean;
+	has_arena_legal: boolean;
+	prices: Prices;
+	card_faces: any[];
+	artist: string;
+	promo_types: any[];
+	cardHoarderUrl: string;
+	cardKingdomUrl: string;
+	cardKingdomFoilUrl: string;
+	cardMarketUrl: string;
+	tcgPlayerUrl: string;
+	isArenaLegal: boolean;
+	released_at: string;
+	edhrec_rank: number;
+	multiverse_ids: number[];
+	cardmarket_id: number;
+	mtgo_id: number;
+	arena_id: number;
+	tcgplayer_id: number;
+	cardkingdom_id: number;
+	cardkingdom_foil_id: number;
+	reprint: boolean;
+	set_type: string;
+	coolStuffIncUrl: string;
+	coolStuffIncFoilUrl: string;
+	acorn: boolean;
+	image_seq: number;
+	cardTraderUrl: string;
+	cardTraderFoilUrl: string;
+	content_warning: boolean;
+	starcitygames_sku: string;
+	starcitygames_url: string;
+	starcitygames_foil_sku: string;
+	starcitygames_foil_url: string;
+	isPauperCommander: boolean;
+	isToken: boolean;
+	defaultFinish: string;
 }
 
 export interface Legalities {
-  standard: string
-  future: string
-  historic: string
-  timeless: string
-  gladiator: string
-  pioneer: string
-  explorer: string
-  modern: string
-  legacy: string
-  pauper: string
-  vintage: string
-  penny: string
-  commander: string
-  oathbreaker: string
-  standardbrawl: string
-  brawl: string
-  alchemy: string
-  paupercommander: string
-  duel: string
-  oldschool: string
-  premodern: string
-  predh: string
+	standard: string;
+	future: string;
+	historic: string;
+	timeless: string;
+	gladiator: string;
+	pioneer: string;
+	explorer: string;
+	modern: string;
+	legacy: string;
+	pauper: string;
+	vintage: string;
+	penny: string;
+	commander: string;
+	oathbreaker: string;
+	standardbrawl: string;
+	brawl: string;
+	alchemy: string;
+	paupercommander: string;
+	duel: string;
+	oldschool: string;
+	premodern: string;
+	predh: string;
 }
 
 export interface Prices {
-  usd: number
-  usd_foil: number
-  eur: number
-  eur_foil: number
-  tix: number
-  ck: number
-  ck_foil: number
-  lastUpdatedAtUtc: string
-  ck_buy: number
-  ck_buy_foil: number
-  csi: number
-  csi_foil: number
-  csi_buy: number
-  csi_buy_foil: number
-  ct_foil: number
-  scg: number
-  scg_foil: number
-  scg_buy: number
-  scg_foil_buy: number
-  usd_etched: any
+	usd: number;
+	usd_foil: number;
+	eur: number;
+	eur_foil: number;
+	tix: number;
+	ck: number;
+	ck_foil: number;
+	lastUpdatedAtUtc: string;
+	ck_buy: number;
+	ck_buy_foil: number;
+	csi: number;
+	csi_foil: number;
+	csi_buy: number;
+	csi_buy_foil: number;
+	ct_foil: number;
+	scg: number;
+	scg_foil: number;
+	scg_buy: number;
+	scg_foil_buy: number;
+	usd_etched: any;
 }
 
 export interface Boards {
-  mainboard: Mainboard
-  sideboard: Sideboard
-  maybeboard: Maybeboard
-  commanders: Commanders
-  companions: Companions
-  signatureSpells: SignatureSpells
-  attractions: Attractions
-  stickers: Stickers
-  contraptions: Contraptions
-  planes: Planes
-  schemes: Schemes
-  tokens: Tokens
+	mainboard: Mainboard;
+	sideboard: Sideboard;
+	maybeboard: Maybeboard;
+	commanders: Commanders;
+	companions: Companions;
+	signatureSpells: SignatureSpells;
+	attractions: Attractions;
+	stickers: Stickers;
+	contraptions: Contraptions;
+	planes: Planes;
+	schemes: Schemes;
+	tokens: Tokens;
 }
 
 export interface Mainboard {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Sideboard {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Maybeboard {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Commanders {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Companions {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface SignatureSpells {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Attractions {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Stickers {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Contraptions {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Planes {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Schemes {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Tokens {
-  count: number
-  cards: Cards
+	count: number;
+	cards: Cards;
 }
 
 export interface Cards {
-  [uniqueCardId: string]: CardDetails
+	[uniqueCardId: string]: CardDetails;
 }
 
 export interface CardDetails {
-  quantity: number
-  boardType: string
-  finish: string
-  isFoil: boolean
-  isAlter: boolean
-  isProxy: boolean
-  card: Card
-  useCmcOverride: boolean
-  useManaCostOverride: boolean
-  useColorIdentityOverride: boolean
-  excludedFromColor: boolean
+	quantity: number;
+	boardType: string;
+	finish: string;
+	isFoil: boolean;
+	isAlter: boolean;
+	isProxy: boolean;
+	card: Card;
+	useCmcOverride: boolean;
+	useManaCostOverride: boolean;
+	useColorIdentityOverride: boolean;
+	excludedFromColor: boolean;
+}
+
+export interface CardSimplified {
+	id: string;
+	name: string;
+	image: string;
+	scryfallId: string;
 }
 
 export interface Card {
-  id: string
-  uniqueCardId: string
-  scryfall_id: string
-  set: string
-  set_name: string
-  name: string
-  cn: string
-  layout: string
-  cmc: number
-  type: string
-  type_line: string
-  oracle_text: string
-  mana_cost: string
-  colors: string[]
-  color_indicator: any[]
-  color_identity: string[]
-  legalities: { [key: string]: string}
-  frame: string
-  reserved: boolean
-  digital: boolean
-  foil: boolean
-  nonfoil: boolean
-  etched: boolean
-  glossy: boolean
-  rarity: string
-  border_color: string
-  colorshifted: boolean
-  lang: string
-  latest: boolean
-  has_multiple_editions: boolean
-  has_arena_legal: boolean
-  prices: Prices
-  card_faces: any[]
-  artist: string
-  promo_types: any[]
-  cardHoarderUrl: string
-  cardKingdomUrl: string
-  cardMarketUrl: string
-  tcgPlayerUrl: string
-  isArenaLegal: boolean
-  released_at: string
-  edhrec_rank: number
-  multiverse_ids: number[]
-  cardmarket_id: number
-  tcgplayer_id: number
-  cardkingdom_id: number
-  reprint: boolean
-  set_type: string
-  coolStuffIncUrl: string
-  acorn: boolean
-  image_seq: number
-  cardTraderUrl: string
-  cardTraderFoilUrl: string
-  content_warning: boolean
-  starcitygames_sku: string
-  starcitygames_url: string
-  isPauperCommander: boolean
-  isToken: boolean
-  defaultFinish: string
+	id: string;
+	uniqueCardId: string;
+	scryfall_id: string;
+	set: string;
+	set_name: string;
+	name: string;
+	cn: string;
+	layout: string;
+	cmc: number;
+	type: string;
+	type_line: string;
+	oracle_text: string;
+	mana_cost: string;
+	colors: string[];
+	color_indicator: any[];
+	color_identity: string[];
+	legalities: { [key: string]: string };
+	frame: string;
+	reserved: boolean;
+	digital: boolean;
+	foil: boolean;
+	nonfoil: boolean;
+	etched: boolean;
+	glossy: boolean;
+	rarity: string;
+	border_color: string;
+	colorshifted: boolean;
+	lang: string;
+	latest: boolean;
+	has_multiple_editions: boolean;
+	has_arena_legal: boolean;
+	prices: Prices;
+	card_faces: any[];
+	artist: string;
+	promo_types: any[];
+	cardHoarderUrl: string;
+	cardKingdomUrl: string;
+	cardMarketUrl: string;
+	tcgPlayerUrl: string;
+	isArenaLegal: boolean;
+	released_at: string;
+	edhrec_rank: number;
+	multiverse_ids: number[];
+	cardmarket_id: number;
+	tcgplayer_id: number;
+	cardkingdom_id: number;
+	reprint: boolean;
+	set_type: string;
+	coolStuffIncUrl: string;
+	acorn: boolean;
+	image_seq: number;
+	cardTraderUrl: string;
+	cardTraderFoilUrl: string;
+	content_warning: boolean;
+	starcitygames_sku: string;
+	starcitygames_url: string;
+	isPauperCommander: boolean;
+	isToken: boolean;
+	defaultFinish: string;
 }
 
-export interface AuthorTags { }
+export interface AuthorTags {}
 
 export interface OriginalDeck {
-  id: string
-  name: string
-  visibility: string
-  publicId: string
-  mainCardId: string
-  mainCardIdIsCardFace: boolean
-  mainCardIdIsBackFace: boolean
-  createdByUser: CreatedByUser
-  authors: Author[]
-  createdAtUtc: string
-  lastUpdatedAtUtc: string
+	id: string;
+	name: string;
+	visibility: string;
+	publicId: string;
+	mainCardId: string;
+	mainCardIdIsCardFace: boolean;
+	mainCardIdIsBackFace: boolean;
+	createdByUser: CreatedByUser;
+	authors: Author[];
+	createdAtUtc: string;
+	lastUpdatedAtUtc: string;
 }
 
 export interface Affiliates {
-  ck: string
-  tcg: string
-  csi: string
-  ch: string
-  cm: string
-  scg: string
-  ct: string
+	ck: string;
+	tcg: string;
+	csi: string;
+	ch: string;
+	cm: string;
+	scg: string;
+	ct: string;
 }
 
 export interface ColorPercentages {
-  white: number
-  blue: number
-  black: number
-  red: number
-  green: number
+	white: number;
+	blue: number;
+	black: number;
+	red: number;
+	green: number;
 }
 
 export interface ColorIdentityPercentages {
-  white: number
-  blue: number
-  black: number
-  red: number
-  green: number
+	white: number;
+	blue: number;
+	black: number;
+	red: number;
+	green: number;
 }
 
 export interface CardResponse {
-  object: string
-  id: string
-  oracle_id: string
-  multiverse_ids: number[]
-  mtgo_id: number
-  arena_id: number
-  tcgplayer_id: number
-  cardmarket_id: number
-  name: string
-  lang: string
-  released_at: string
-  uri: string
-  scryfall_uri: string
-  layout: string
-  highres_image: boolean
-  image_status: string
-  image_uris: ImageUris
-  mana_cost: string
-  cmc: number
-  type_line: string
-  oracle_text: string
-  power: string
-  toughness: string
-  colors: string[]
-  color_identity: string[]
-  keywords: string[]
-  all_parts: AllPart[]
-  legalities: Legalities
-  games: string[]
-  reserved: boolean
-  game_changer: boolean
-  foil: boolean
-  nonfoil: boolean
-  finishes: string[]
-  oversized: boolean
-  promo: boolean
-  reprint: boolean
-  variation: boolean
-  set_id: string
-  set: string
-  set_name: string
-  set_type: string
-  set_uri: string
-  set_search_uri: string
-  scryfall_set_uri: string
-  rulings_uri: string
-  prints_search_uri: string
-  collector_number: string
-  digital: boolean
-  rarity: string
-  card_back_id: string
-  artist: string
-  artist_ids: string[]
-  illustration_id: string
-  border_color: string
-  frame: string
-  frame_effects: string[]
-  security_stamp: string
-  full_art: boolean
-  textless: boolean
-  booster: boolean
-  story_spotlight: boolean
-  edhrec_rank: number
-  penny_rank: number
-  prices: Prices
-  related_uris: RelatedUris
-  purchase_uris: PurchaseUris
+	object: string;
+	id: string;
+	oracle_id: string;
+	multiverse_ids: number[];
+	mtgo_id: number;
+	arena_id: number;
+	tcgplayer_id: number;
+	cardmarket_id: number;
+	name: string;
+	lang: string;
+	released_at: string;
+	uri: string;
+	scryfall_uri: string;
+	layout: string;
+	highres_image: boolean;
+	image_status: string;
+	image_uris: ImageUris;
+	mana_cost: string;
+	cmc: number;
+	type_line: string;
+	oracle_text: string;
+	power: string;
+	toughness: string;
+	colors: string[];
+	color_identity: string[];
+	keywords: string[];
+	all_parts: AllPart[];
+	legalities: Legalities;
+	games: string[];
+	reserved: boolean;
+	game_changer: boolean;
+	foil: boolean;
+	nonfoil: boolean;
+	finishes: string[];
+	oversized: boolean;
+	promo: boolean;
+	reprint: boolean;
+	variation: boolean;
+	set_id: string;
+	set: string;
+	set_name: string;
+	set_type: string;
+	set_uri: string;
+	set_search_uri: string;
+	scryfall_set_uri: string;
+	rulings_uri: string;
+	prints_search_uri: string;
+	collector_number: string;
+	digital: boolean;
+	rarity: string;
+	card_back_id: string;
+	artist: string;
+	artist_ids: string[];
+	illustration_id: string;
+	border_color: string;
+	frame: string;
+	frame_effects: string[];
+	security_stamp: string;
+	full_art: boolean;
+	textless: boolean;
+	booster: boolean;
+	story_spotlight: boolean;
+	edhrec_rank: number;
+	penny_rank: number;
+	prices: Prices;
+	related_uris: RelatedUris;
+	purchase_uris: PurchaseUris;
 }
 
 export interface ImageUris {
-  small: string
-  normal: string
-  large: string
-  png: string
-  art_crop: string
-  border_crop: string
+	small: string;
+	normal: string;
+	large: string;
+	png: string;
+	art_crop: string;
+	border_crop: string;
 }
 
 export interface AllPart {
-  object: string
-  id: string
-  component: string
-  name: string
-  type_line: string
-  uri: string
+	object: string;
+	id: string;
+	component: string;
+	name: string;
+	type_line: string;
+	uri: string;
 }
 
 export interface Legalities {
-  standard: string
-  future: string
-  historic: string
-  timeless: string
-  gladiator: string
-  pioneer: string
-  explorer: string
-  modern: string
-  legacy: string
-  pauper: string
-  vintage: string
-  penny: string
-  commander: string
-  oathbreaker: string
-  standardbrawl: string
-  brawl: string
-  alchemy: string
-  paupercommander: string
-  duel: string
-  oldschool: string
-  premodern: string
-  predh: string
+	standard: string;
+	future: string;
+	historic: string;
+	timeless: string;
+	gladiator: string;
+	pioneer: string;
+	explorer: string;
+	modern: string;
+	legacy: string;
+	pauper: string;
+	vintage: string;
+	penny: string;
+	commander: string;
+	oathbreaker: string;
+	standardbrawl: string;
+	brawl: string;
+	alchemy: string;
+	paupercommander: string;
+	duel: string;
+	oldschool: string;
+	premodern: string;
+	predh: string;
 }
 
 export interface RelatedUris {
-  gatherer: string
-  tcgplayer_infinite_articles: string
-  tcgplayer_infinite_decks: string
-  edhrec: string
+	gatherer: string;
+	tcgplayer_infinite_articles: string;
+	tcgplayer_infinite_decks: string;
+	edhrec: string;
 }
 
 export interface PurchaseUris {
-  tcgplayer: string
-  cardmarket: string
-  cardhoarder: string
+	tcgplayer: string;
+	cardmarket: string;
+	cardhoarder: string;
 }
