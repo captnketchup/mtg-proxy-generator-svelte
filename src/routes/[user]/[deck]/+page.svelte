@@ -5,7 +5,7 @@
 	const { data } = $props();
 </script>
 
-<ul class="grid grid-cols-4 gap-4">
+<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
 	{#each data.cards as card}
 		<li>
 			<img class="aspect-[2.5/3.5]" src={card.image} alt={card.name} />
