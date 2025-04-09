@@ -16,12 +16,13 @@ export const load: PageServerLoad = async ({ params }) => {
 	const cardsLargeImages = await ScryfallClient.ReplaceImageUrls(cards);
 	const groupedCards = groupCards(cardsLargeImages, 9);
 
-	console.log(groupedCards[0][0]);
-	const image = generateA4Picture([groupedCards[0][0].image]);
+	const imageStrings = groupedCards.map((group) => group.map((element) => element.image));
 
-	// console.log(image);
+	const exportImages = await Promise.all(imageStrings.map((group) => generateA4Picture(group)));
 
-	return { groupedCards, user, deckId };
+	console.log(exportImages);
+
+	return { groupedCards, user, deckId, exportImages };
 };
 
 function groupCards(cards: CardSimplified[], chunkSize: number) {
