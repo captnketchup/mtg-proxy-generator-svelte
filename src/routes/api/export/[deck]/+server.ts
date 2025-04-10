@@ -1,63 +1,46 @@
-import { error } from '@sveltejs/kit';
-import type { RequestHandler } from './$types';
+import JSZip from 'jszip';
 import { generateA4Picture } from '$lib/server/services/canvas-service';
 import { MoxfieldClient } from '$lib/api/moxfield-client';
+import { error } from '@sveltejs/kit';
 import { ScryfallClient } from '$lib/api/scryfall-client';
-import type { CardSimplified } from '$lib/api/types';
-import AdmZip from 'adm-zip';
 
-export const GET: RequestHandler = async ({ url }) => {
-	// const testString = 'https://assets.moxfield.net/cards/card-LKq0m-normal.jpg';
-	// const response = await generateA4Picture([testString]);
+export async function GET({ params, request }) {
+	console.log(`api/export/deckname called`);
+	console.log(params);
 
-	const deckId = url.pathname.split('/').at(-1);
-	if (!deckId?.length) {
-		throw error(404);
+	if (params.deck.length != 22) {
+		throw error(400, 'Invalid deck id');
 	}
-
-	const deckResponse = await MoxfieldClient.GetDeck(deckId);
-	const cards = MoxfieldClient.FilterCardsFromDeck(deckResponse);
+	const response = await MoxfieldClient.GetDeck(params.deck);
+	const cards = MoxfieldClient.FilterCardsFromDeck(response);
 	const cardsLargeImages = await ScryfallClient.ReplaceImageUrls(cards);
-	const groupedCards = groupCards(cardsLargeImages, 9);
+	const groupedCards = groupEntites(cardsLargeImages, 9);
+	const imageStrings = groupedCards.map((group) => group.map((element) => element.image));
+	const exportImages = await Promise.all(imageStrings.map((group) => generateA4Picture(group)));
 
-	// const results = groupedCards.map((element) => {
-	// 	console.log('Mapping elements...');
-	// 	const imageUrls = element.map((c) => c.image);
-	// 	const response = generateA4Picture(imageUrls);
-	// 	return response;
-	// });
-
-	// const data = await Promise.all(results);
-
-	const imageUrls = groupedCards[0].map((c) => c.image);
-	const response = await generateA4Picture(imageUrls);
-
-	// console.log('Zipping data...');
-	// const zip = new AdmZip();
-	// const results = groupedCards.map(async (element) => {
-	// 	console.log('Mapping elements...');
-	// 	const imageUrls = element.map((c) => c.image);
-	// 	const response = await generateA4Picture(imageUrls);
-	// 	zip.addFile('test', response);
-	// 	return response;
-	// });
-
-	// const data = await Promise.all(results);
-
-	return new Response(response, {
-		status: 200,
-		headers: {
-			'Content-Type': 'image/png',
-			// 'Content-Encoding': 'gzip',
-			'Content-Disposition': 'filename="proxies5.png"'
-		}
+	const zip = new JSZip();
+	exportImages.forEach((imageBuffer, index) => {
+		zip.file(`image${index + 1}.png`, imageBuffer);
 	});
-};
+	console.log('ideértem');
 
-function groupCards(cards: CardSimplified[], chunkSize: number) {
-	let chunkedCards: CardSimplified[][] = [];
-	while (cards?.length > 0) {
-		chunkedCards.push(cards.splice(0, chunkSize));
+	try {
+		const zipBlob = await zip.generateAsync({ type: 'blob' });
+
+		return new Response(zipBlob, {
+			headers: {
+				'Content-Type': 'application/zip'
+			}
+		});
+	} catch (message) {
+		return error(500, `${message}`);
 	}
-	return chunkedCards;
+}
+
+function groupEntites<T>(entities: T[], chunkSize: number) {
+	let chunkedEntities: T[][] = [];
+	while (entities?.length > 0) {
+		chunkedEntities.push(entities.splice(0, chunkSize));
+	}
+	return chunkedEntities;
 }

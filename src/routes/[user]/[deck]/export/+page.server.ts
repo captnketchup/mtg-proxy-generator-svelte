@@ -2,8 +2,8 @@ import { MoxfieldClient } from '$lib/api/moxfield-client';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { CardSimplified, DeckResponse } from '$lib/api/types';
-import { generateA4Picture } from '$lib/server/services/canvas-service.js';
 import { ScryfallClient } from '$lib/api/scryfall-client';
+import { generateA4Picture } from '$lib/server/services/canvas-service';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const user = params.user;
@@ -16,13 +16,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	const cardsLargeImages = await ScryfallClient.ReplaceImageUrls(cards);
 	const groupedCards = groupCards(cardsLargeImages, 9);
 
-	const imageStrings = groupedCards.map((group) => group.map((element) => element.image));
-
-	const exportImages = await Promise.all(imageStrings.map((group) => generateA4Picture(group)));
-
-	console.log(exportImages);
-
-	return { groupedCards, user, deckId, exportImages };
+	return { groupedCards, user, deckId };
 };
 
 function groupCards(cards: CardSimplified[], chunkSize: number) {

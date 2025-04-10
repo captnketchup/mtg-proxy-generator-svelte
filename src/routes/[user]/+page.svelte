@@ -41,8 +41,8 @@
 						<Card.Content class="flex flex-col justify-end">
 							<img
 								class="aspect-[2.5/3.5] rounded-lg"
-								src={commandersImages[i].image}
-								alt={commandersImages[i].name}
+								src={commandersImages[i]?.image}
+								alt={commandersImages[i]?.name}
 							/>
 						</Card.Content>
 					</Card.Root>
