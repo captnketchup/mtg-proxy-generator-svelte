@@ -5,9 +5,6 @@ import { error } from '@sveltejs/kit';
 import { ScryfallClient } from '$lib/api/scryfall-client';
 
 export async function GET({ params, request }) {
-	console.log(`api/export/deckname called`);
-	console.log(params);
-
 	if (params.deck.length != 22) {
 		throw error(400, 'Invalid deck id');
 	}
@@ -22,7 +19,6 @@ export async function GET({ params, request }) {
 	exportImages.forEach((imageBuffer, index) => {
 		zip.file(`image${index + 1}.png`, imageBuffer);
 	});
-	console.log('ideértem');
 
 	try {
 		const zipBlob = await zip.generateAsync({ type: 'blob' });
