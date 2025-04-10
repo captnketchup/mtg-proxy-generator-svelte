@@ -1,8 +1,7 @@
 import { createCanvas, loadImage } from 'canvas';
 
-export async function generateA4Picture(images: string[]) {
+export async function generateA4Picture(images: string[], scale: number) {
 	console.log('Generating pictures...');
-	const scale = 0.25;
 	const padding = 200 * scale;
 	const canvas = createCanvas(4960 * scale, 7016 * scale);
 	const ctx = canvas.getContext('2d');

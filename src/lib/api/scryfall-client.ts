@@ -11,7 +11,7 @@ export class ScryfallClient {
 		return body.image_uris.png;
 	}
 
-	static async ReplaceImageUrls(cards: CardSimplified[]) {
+	static async ReplaceImageUrls(cards: CardSimplified[]): Promise<CardSimplified[]> {
 		return await Promise.all(
 			cards.map(async (card) => ({
 				id: card.id,

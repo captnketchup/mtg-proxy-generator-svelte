@@ -4,16 +4,19 @@ import { MoxfieldClient } from '$lib/api/moxfield-client';
 import { error } from '@sveltejs/kit';
 import { ScryfallClient } from '$lib/api/scryfall-client';
 
-export async function GET({ params, request }) {
+export async function GET({ params, request, url }) {
 	if (params.deck.length != 22) {
 		throw error(400, 'Invalid deck id');
 	}
+	const scale = Number(url.searchParams.get('scaling') ?? 0.25);
 	const response = await MoxfieldClient.GetDeck(params.deck);
 	const cards = MoxfieldClient.FilterCardsFromDeck(response);
 	const cardsLargeImages = await ScryfallClient.ReplaceImageUrls(cards);
 	const groupedCards = groupEntites(cardsLargeImages, 9);
 	const imageStrings = groupedCards.map((group) => group.map((element) => element.image));
-	const exportImages = await Promise.all(imageStrings.map((group) => generateA4Picture(group)));
+	const exportImages = await Promise.all(
+		imageStrings.map((group) => generateA4Picture(group, scale))
+	);
 
 	const zip = new JSZip();
 	exportImages.forEach((imageBuffer, index) => {
