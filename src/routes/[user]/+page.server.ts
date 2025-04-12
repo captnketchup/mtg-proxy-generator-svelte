@@ -5,11 +5,14 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ params }) => {
 	const user = params.user;
 	const userDecks = await MoxfieldClient.GetDecksByUser(user);
-	if (userDecks === undefined) {
+	const commanderDecks = MoxfieldClient.FilterCommanderDecks(userDecks);
+
+	if (commanderDecks === undefined) {
 		error(404, 'Decks per user not found');
 	}
-	const deckResponses = await Promise.all(
-		userDecks.data.map(async (deck) => await MoxfieldClient.GetDeck(deck.publicId))
+	let deckResponses = await Promise.all(
+		commanderDecks.data.map(async (deck) => await MoxfieldClient.GetDeck(deck.publicId))
 	);
-	return { ...userDecks, user, deckResponses };
+	deckResponses = MoxfieldClient.FilterValidDecks(deckResponses);
+	return { ...commanderDecks, user, deckResponses };
 };
