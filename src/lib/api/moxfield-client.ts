@@ -1,4 +1,4 @@
-import type { CardSimplified, DeckResponse, UserDecksResponse } from './types';
+import type { CardSimplified, Deck, DeckResponse, UserDecksResponse } from './types';
 
 export class MoxfieldClient {
 	static baseUrl = 'https://api2.moxfield.com';
@@ -42,12 +42,31 @@ export class MoxfieldClient {
 
 	static FilterCardsFromDeck(deckResponse: DeckResponse | undefined): CardSimplified[] {
 		if (deckResponse === undefined) return [];
-		return Object.values(deckResponse.boards.mainboard.cards).map((c) => ({
-			id: c.card.id,
-			name: c.card.name,
-			image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`,
-			scryfallId: c.card.scryfall_id
-		}));
+
+		const simplifiedCards: CardSimplified[] = [];
+
+		for (const c of Object.values(deckResponse.boards.mainboard.cards)) {
+			const baseCard = c.card;
+
+			if (baseCard.card_faces.length > 0) {
+				for (const face of baseCard.card_faces) {
+					simplifiedCards.push({
+						id: face.id,
+						name: face.name,
+						image: `https://assets.moxfield.net/cards/card-face-${face.id}-normal.jpg`,
+						scryfallId: baseCard.scryfall_id
+					});
+				}
+			} else {
+				simplifiedCards.push({
+					id: c.card.id,
+					name: c.card.name,
+					image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`,
+					scryfallId: c.card.scryfall_id
+				});
+			}
+		}
+		return simplifiedCards;
 	}
 
 	static FilterCommanderFromDeck(deckResponse: DeckResponse): CardSimplified[] {
@@ -57,5 +76,15 @@ export class MoxfieldClient {
 			image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`,
 			scryfallId: c.card.scryfall_id
 		}));
+	}
+
+	static FilterValidDecks(deckResponses: DeckResponse[]) {
+		return deckResponses.filter((x) => Object.keys(x.boards.commanders.cards).length);
+	}
+
+	static FilterCommanderDecks(deckResponse: UserDecksResponse) {
+		const filteredData = deckResponse.data.filter((x) => x.format === 'commander');
+		deckResponse.data = filteredData;
+		return deckResponse;
 	}
 }
