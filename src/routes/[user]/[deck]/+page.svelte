@@ -9,6 +9,7 @@
 	{#each data.cards as card}
 		<li>
 			<img class="aspect-[2.5/3.5]" src={card.image} alt={card.name} />
+			<span class="sr-only">{card.name}</span>
 		</li>
 	{/each}
 </ul>

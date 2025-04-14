@@ -6,6 +6,14 @@
 
 	const { data } = $props();
 
+	const colorSymbols: Record<string, string> = {
+		B: '💀',
+		W: '☀',
+		U: '💧',
+		R: '🔥',
+		G: '🌳'
+	};
+
 	$effect(() => {
 		if (!$deckStore.deckList.length) {
 			deckStore.setDeck(data.deckResponses);
@@ -17,6 +25,7 @@
 	let commandersImages = data.deckResponses.map(
 		(deck) => MoxfieldClient.FilterCommanderFromDeck(deck)[0]
 	);
+	console.log(commandersImages);
 </script>
 
 <Card.Root class="h-fit">
@@ -33,17 +42,29 @@
 						<Card.Header>
 							<Card.Title>{deck.name}</Card.Title>
 							<Card.Description>
-								{#each deck.colors as color}
-									{color}
-								{/each}
+								{#if deck.colors.length == 0}
+									◊
+								{:else}
+									{#each deck.colors as color}
+										{colorSymbols[color]}
+									{/each}
+								{/if}
 							</Card.Description>
 						</Card.Header>
 						<Card.Content class="flex flex-col justify-end">
-							<img
-								class="aspect-[2.5/3.5] rounded-lg"
-								src={commandersImages[i]?.image}
-								alt={commandersImages[i]?.name}
-							/>
+							{#if commandersImages[i] === undefined}
+								<img
+									class="aspect-[2.5/3.5] rounded-lg"
+									src="https://backs.scryfall.io/large/2/2/222b7a3b-2321-4d4c-af19-19338b134971.jpg?1677416389"
+									alt="no commander"
+								/>
+							{:else}
+								<img
+									class="aspect-[2.5/3.5] rounded-lg"
+									src={commandersImages[i]?.image}
+									alt={commandersImages[i]?.name}
+								/>
+							{/if}
 						</Card.Content>
 					</Card.Root>
 				</a>
