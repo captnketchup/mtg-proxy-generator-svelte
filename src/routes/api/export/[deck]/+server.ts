@@ -2,7 +2,6 @@ import JSZip from 'jszip';
 import { generateA4Picture } from '$lib/server/services/canvas-service';
 import { MoxfieldClient } from '$lib/api/moxfield-client';
 import { error } from '@sveltejs/kit';
-import { ScryfallClient } from '$lib/api/scryfall-client';
 
 export async function GET({ params, request, url }) {
 	if (params.deck.length != 22) {
@@ -11,8 +10,7 @@ export async function GET({ params, request, url }) {
 	const scale = Number(url.searchParams.get('scaling') ?? 0.25);
 	const response = await MoxfieldClient.GetDeck(params.deck);
 	const cards = MoxfieldClient.FilterCardsFromDeck(response);
-	const cardsLargeImages = await ScryfallClient.ReplaceImageUrls(cards);
-	const groupedCards = groupEntites(cardsLargeImages, 9);
+	const groupedCards = groupEntites(cards, 9);
 	const imageStrings = groupedCards.map((group) => group.map((element) => element.image));
 	const exportImages = await Promise.all(
 		imageStrings.map((group) => generateA4Picture(group, scale))

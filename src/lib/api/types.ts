@@ -215,6 +215,7 @@ export interface CardFace {
 	colors: any[];
 	color_indicator: any[];
 	image_seq: number;
+	image_uris: ImageUris | undefined;
 }
 
 export interface CreatedByUser {
@@ -556,6 +557,7 @@ export interface ColorIdentityPercentages {
 export interface CardResponse {
 	object: string;
 	id: string;
+	card_faces: CardFace[] | undefined;
 	oracle_id: string;
 	multiverse_ids: number[];
 	mtgo_id: number;
