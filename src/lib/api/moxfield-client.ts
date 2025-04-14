@@ -87,4 +87,18 @@ export class MoxfieldClient {
 		deckResponse.data = filteredData;
 		return deckResponse;
 	}
+
+	static async GetUser(userName: string) {
+		const paramsObj = {
+			filter: userName,
+			pageNumber: '1',
+			pageSize: '100'
+		};
+		const searchParams = new URLSearchParams(paramsObj);
+		const searchUrl = `${this.baseUrl}/v2/users/search?${searchParams.toString()}`;
+		const response = await fetch(searchUrl);
+
+		const body: UserDecksResponse = await response.json();
+		return body;
+	}
 }
