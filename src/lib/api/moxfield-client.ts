@@ -69,13 +69,20 @@ export class MoxfieldClient {
 		return simplifiedCards;
 	}
 
-	static FilterCommanderFromDeck(deckResponse: DeckResponse): CardSimplified[] {
-		return Object.values(deckResponse.boards.commanders.cards).map((c) => ({
-			id: c.card.id,
-			name: c.card.name,
-			image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`,
-			scryfallId: c.card.scryfall_id
-		}));
+	static FilterCommanderFromDeck(deckResponse: DeckResponse): (CardSimplified | {})[] {
+		const cards = deckResponse.boards.commanders.cards;
+
+		return Object.values(cards).map((c) => {
+			if (c?.card) {
+				return {
+					id: c.card.id,
+					name: c.card.name,
+					image: `https://assets.moxfield.net/cards/card-${c.card.id}-normal.jpg`,
+					scryfallId: c.card.scryfall_id
+				};
+			}
+			return {};
+		});
 	}
 
 	static FilterValidDecks(deckResponses: DeckResponse[]) {

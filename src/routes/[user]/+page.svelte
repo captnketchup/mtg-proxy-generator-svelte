@@ -25,6 +25,9 @@
 	let commandersImages = data.deckResponses.map(
 		(deck) => MoxfieldClient.FilterCommanderFromDeck(deck)[0]
 	);
+	console.log('data.data');
+	console.log(data.data);
+	console.log('commandersImages');
 	console.log(commandersImages);
 </script>
 
